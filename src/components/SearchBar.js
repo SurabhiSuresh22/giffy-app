@@ -1,11 +1,21 @@
 import React from 'react'
 import './SearchBar.css'
 
-const SearchBar = () => {
+const SearchBar = ({search,data, loading, handleSearch, handleSubmit}) => {
   return (
     <div className='searchBox'>
-        <input type="text" placeholder='Add name or keyword...' />
-        <button>Search</button>
+      <form >
+        <input 
+        value={search} 
+        onChange={handleSearch} 
+        type="text" 
+        
+        placeholder='Add name or keyword...' />
+        <button 
+        onClick={handleSubmit}
+        type='submit'
+        >Search</button>
+      </form>
     </div>
   )
 }
