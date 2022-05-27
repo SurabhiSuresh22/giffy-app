@@ -1,10 +1,16 @@
 .giphy-container{
-    margin: 20px 100px;
+    height: 65vh;
+    overflow: auto;
+    margin: 20px 10px;
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
     align-items: center;
 }
 
 .gif{
- padding: 0 2px;
+    padding: 0 2px;
+}
+.loader {
+   margin: auto;
 }
