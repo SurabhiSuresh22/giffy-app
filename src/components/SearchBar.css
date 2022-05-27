@@ -1,0 +1,31 @@
+
+.searchBox{
+    display: flex;
+    justify-content: center;
+/* height: 85vh;
+  width: 90vw; */
+    background-color: rgb(255, 255, 255);
+}
+
+input{
+    border-radius: 5px;
+    font-size: 18px;
+    width: 800px;
+    height: 60px;
+    border: none;
+    background-color: rgb(217, 223, 225);
+    box-shadow: -1px 3px 10px -6px rgba(0, 0, 0, 0.75);
+}
+::placeholder {
+    color: rgb(0, 0, 0);
+    opacity: 1;
+}
+button{
+    height: 60px;
+    width: 80px;
+    margin: 5px 10px;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}

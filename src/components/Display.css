@@ -1,0 +1,10 @@
+.giphy-container{
+    margin: 20px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.gif{
+ padding: 0 2px;
+}
