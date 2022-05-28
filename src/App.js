@@ -15,13 +15,7 @@ function App() {
   const [data,setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
-  const [currPage, setCurrPage] = useState(1)
-  const [itemsPerpage, setItemsPerPage] = useState(20)
-  // to slice array of gifs
-  //const indexofLast = (currPage + 1) * itemsPerpage
-  //const indexofFirst = indexofLast - itemsPerpage
-  //const currItems = data.slice(indexofFirst,indexofLast)
-
+  const itemsPerpage = 10
   const [pageNum, setPageNum] = useState(0)
   const pageCount = Math.ceil(data.length/itemsPerpage)
   const pagesVisited = pageNum * itemsPerpage
@@ -43,10 +37,6 @@ function App() {
       setData(results.data.data)
       setLoading(false)
   }
-
-  // const pageSelected = (pageNum) =>{
-  //   setCurrPage(pageNum)
-  // }
 
   const changePage = ({selected}) =>{
     setPageNum(selected)
@@ -83,14 +73,12 @@ else {
           <Display 
           data={data} 
           loading={loading}
-          currPage={currPage}
           currItems={currItems}
           itemsPerpage={itemsPerpage}
           />
 
           <Paginate 
-          changePage={changePage}
-          currPage={currPage} 
+          changePage={changePage} 
           pageCount={pageCount}
           itemsPerpage={itemsPerpage}
           totalItems={data.length}/>

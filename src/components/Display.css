@@ -11,6 +11,9 @@
 .gif{
     padding: 0 2px;
 }
+img{
+    border-radius: 10px;
+}
 .loader {
    margin: auto;
 }
