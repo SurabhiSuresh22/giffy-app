@@ -3,6 +3,7 @@ import { useEffect,useState } from 'react';
 import Display from './components/Display';
 import SearchBar from './components/SearchBar';
 import axios from 'axios'
+import Paginate from './components/Paginate';
 
 function App() {
 
@@ -14,6 +15,17 @@ function App() {
   const [data,setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
+  const [currPage, setCurrPage] = useState(1)
+  const [itemsPerpage, setItemsPerPage] = useState(20)
+  // to slice array of gifs
+  //const indexofLast = (currPage + 1) * itemsPerpage
+  //const indexofFirst = indexofLast - itemsPerpage
+  //const currItems = data.slice(indexofFirst,indexofLast)
+
+  const [pageNum, setPageNum] = useState(0)
+  const pageCount = Math.ceil(data.length/itemsPerpage)
+  const pagesVisited = pageNum * itemsPerpage
+  const currItems = data.slice(pagesVisited, pagesVisited + itemsPerpage)
 
   const handleSearch = (e) =>{
     setSearch(e.target.value)
@@ -32,7 +44,32 @@ function App() {
       setLoading(false)
   }
 
+  // const pageSelected = (pageNum) =>{
+  //   setCurrPage(pageNum)
+  // }
+
+  const changePage = ({selected}) =>{
+    setPageNum(selected)
+  }
+
+if (search===''){
   return (
+    <div className="app">
+      <div className="space">
+        <div className="content">
+          <SearchBar 
+          data={data} 
+          loading={loading} 
+          search={search} 
+          handleSearch={handleSearch}
+          handleSubmit={handleSubmit}/>
+        </div>
+      </div>
+    </div>)
+}
+
+else {
+  return(
     <div className="app">
       <div className="space">
         <div className="content">
@@ -46,13 +83,24 @@ function App() {
           <Display 
           data={data} 
           loading={loading}
-          setData={setData}
-          setLoading={setLoading}
+          currPage={currPage}
+          currItems={currItems}
+          itemsPerpage={itemsPerpage}
           />
+
+          <Paginate 
+          changePage={changePage}
+          currPage={currPage} 
+          pageCount={pageCount}
+          itemsPerpage={itemsPerpage}
+          totalItems={data.length}/>
+
         </div>
       </div>
     </div>
-  );
+  )
+}
+
 }
 
 export default App;

@@ -9,13 +9,14 @@ const SearchBar = ({search,data, loading, handleSearch, handleSubmit}) => {
         value={search} 
         onChange={handleSearch} 
         type="text" 
-        
         placeholder='Add name or keyword...' />
+
         <button 
         onClick={handleSubmit}
         type='submit'
         >Search</button>
       </form>
+
     </div>
   )
 }
